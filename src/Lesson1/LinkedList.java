@@ -1,3 +1,7 @@
+package Lesson1;
+
+import java.util.ArrayList;
+
 public class LinkedList {
     public Node head;
     public Node tail;
@@ -41,6 +45,7 @@ public class LinkedList {
             if (this.head.value == _value) this.head = node.next;
             if (node.next != null && node.next.value == _value) {
                 node.next = node.next.next;
+                if (node.next == null) this.tail = node;
                 return true;
             }
             node = node.next;
@@ -72,8 +77,15 @@ public class LinkedList {
     }
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
-        if (_nodeAfter == null) {
+        if (_nodeAfter == null && count() == 0) {
             this.head = _nodeToInsert;
+            this.tail = _nodeToInsert;
+            return;
+        }
+        if (_nodeAfter == null && count() != 0) {
+            Node nextNode = this.head.next;
+            this.head = _nodeToInsert;
+            this.head.next = nextNode;
             return;
         }
         Node node = this.head;

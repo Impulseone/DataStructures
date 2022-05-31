@@ -14,6 +14,8 @@ public class LinkedListTest {
         list.addInTail(new Node(40));
         Node resultNode = list.find(10);
         assert resultNode.value == 10;
+        assert list.head.value == 10;
+        assert list.tail.value == 40;
     }
 
     @Test
@@ -40,11 +42,18 @@ public class LinkedListTest {
     }
 
     @Test
-    public void clearTest() {
+    public void clearTest1() {
         LinkedList list = new LinkedList();
         list.addInTail(new Node(10));
         list.addInTail(new Node(20));
         list.addInTail(new Node(30));
+        list.clear();
+        assert list.count() == 0;
+    }
+
+    @Test
+    public void clearTest2() {
+        LinkedList list = new LinkedList();
         list.clear();
         assert list.count() == 0;
     }
@@ -57,6 +66,8 @@ public class LinkedListTest {
         list.addInTail(new Node(20));
         list.remove(20);
         assert list.count() == 2;
+        assert list.head.value == 10;
+        assert list.tail.value == 20;
     }
 
     @Test
@@ -76,6 +87,8 @@ public class LinkedListTest {
         list.addInTail(new Node(20));
         list.remove(10);
         assert list.count() == 1;
+        assert list.head.value == 20;
+        assert list.tail.value == 20;
     }
 
     @Test
@@ -86,6 +99,8 @@ public class LinkedListTest {
         list.addInTail(new Node(20));
         list.removeAll(20);
         assert list.count() == 1;
+        assert list.head.value == 10;
+        assert list.tail.value == 10;
     }
 
     @Test
@@ -96,6 +111,8 @@ public class LinkedListTest {
         list.addInTail(new Node(10));
         list.removeAll(20);
         assert list.count() == 1;
+        assert list.head.value == 10;
+        assert list.tail.value == 10;
     }
 
     @Test
@@ -116,6 +133,8 @@ public class LinkedListTest {
         list.addInTail(new Node(50));
         list.insertAfter(node, new Node(40));
         assert list.count() == 3;
+        assert list.head.value == 20;
+        assert list.tail.value == 50;
     }
 
     @Test
@@ -123,6 +142,18 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.insertAfter(null, new Node(40));
         assert list.count() == 1;
+        assert list.head.value == 40;
+        assert list.tail.value == 40;
+    }
+
+    @Test
+    public void insertTest3() {
+        LinkedList list = new LinkedList();
+        list.addInTail(new Node(50));
+        list.insertAfter(null, new Node(40));
+        assert list.count() == 1;
+        assert list.head.value == 40;
+        assert list.tail.value == 50;
     }
 
     @Test
