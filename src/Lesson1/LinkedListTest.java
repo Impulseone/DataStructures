@@ -92,6 +92,16 @@ public class LinkedListTest {
     }
 
     @Test
+    public void removeTest4() {
+        LinkedList list = new LinkedList();
+        list.addInTail(new Node(10));
+        list.remove(10);
+        assert list.count() == 0;
+        assert list.head == null;
+        assert list.tail == null;
+    }
+
+    @Test
     public void removeAllTest() {
         LinkedList list = new LinkedList();
         list.addInTail(new Node(10));
