@@ -84,36 +84,40 @@ public class LinkedList {
     }
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
-        if (_nodeAfter == null && count() == 0) {
+        Node node = this.head;
+
+        if (node == null && _nodeAfter == null) {
             this.head = _nodeToInsert;
             this.tail = _nodeToInsert;
             return;
         }
-        if (_nodeAfter == null && count() != 0) {
-            Node nextNode = this.head.next;
-            Node headBefore = this.head;
-            this.head = _nodeToInsert;
-            this.head.next = nextNode;
-            if (nextNode == null) {
+        while (node != null) {
+            if (_nodeAfter == null && node.next == null) {
+                Node headBefore = this.head;
+                this.head = _nodeToInsert;
                 this.head.next = headBefore;
                 this.tail = headBefore;
+                return;
             }
-            return;
-        }
-        if (_nodeAfter != null) {
-            Node node = this.head;
-            while (node != null) {
-                if (node.value == _nodeAfter.value && node.next == null) {
-                    node.next = _nodeToInsert;
-                    _nodeToInsert.next = null;
-                    tail = _nodeToInsert;
-                } else if (node.value == _nodeAfter.value) {
-                    Node nextNode = node.next;
-                    node.next = _nodeToInsert;
-                    _nodeToInsert.next = nextNode;
-                }
-                node = node.next;
+            if (_nodeAfter == null) {
+                Node headBefore = this.head;
+                this.head = _nodeToInsert;
+                this.head.next = headBefore;
+                return;
             }
+            if (node.value == _nodeAfter.value && node.next == null) {
+                node.next = _nodeToInsert;
+                _nodeToInsert.next = null;
+                this.tail = _nodeToInsert;
+                return;
+            }
+            if (node.value == _nodeAfter.value) {
+                Node nextNode = node.next;
+                node.next = _nodeToInsert;
+                _nodeToInsert.next = nextNode;
+                return;
+            }
+            node = node.next;
         }
     }
 
