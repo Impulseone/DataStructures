@@ -1,7 +1,3 @@
-package LinkedList;
-
-import java.util.ArrayList;
-
 public class LinkedList {
     public Node head;
     public Node tail;
