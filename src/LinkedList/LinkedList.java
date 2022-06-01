@@ -1,3 +1,7 @@
+package LinkedList;
+
+import java.util.ArrayList;
+
 public class LinkedList {
     public Node head;
     public Node tail;
@@ -87,18 +91,29 @@ public class LinkedList {
         }
         if (_nodeAfter == null && count() != 0) {
             Node nextNode = this.head.next;
+            Node headBefore = this.head;
             this.head = _nodeToInsert;
             this.head.next = nextNode;
+            if (nextNode == null) {
+                this.head.next = headBefore;
+                this.tail = headBefore;
+            }
             return;
         }
-        Node node = this.head;
-        while (node != null) {
-            if (node.value == _nodeAfter.value) {
-                Node nextNode = node.next;
-                node.next = _nodeToInsert;
-                _nodeToInsert.next = nextNode;
+        if (_nodeAfter != null) {
+            Node node = this.head;
+            while (node != null) {
+                if (node.value == _nodeAfter.value && node.next == null) {
+                    node.next = _nodeToInsert;
+                    _nodeToInsert.next = null;
+                    tail = _nodeToInsert;
+                } else if (node.value == _nodeAfter.value) {
+                    Node nextNode = node.next;
+                    node.next = _nodeToInsert;
+                    _nodeToInsert.next = nextNode;
+                }
+                node = node.next;
             }
-            node = node.next;
         }
     }
 
