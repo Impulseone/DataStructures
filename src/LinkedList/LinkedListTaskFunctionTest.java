@@ -2,13 +2,7 @@ package LinkedList;
 
 import org.junit.Test;
 
-
-// InEmptyListTest
-// InManyElementsListTest
-// InOneElementListTest
-
-
-public class LinkedListTest {
+public class LinkedListTaskFunctionTest {
 
     @Test
     public void fun() {
