@@ -24,6 +24,7 @@ public class InsertAfterTest {
         assert list.head.value == 10;
         assert list.head.next.value == 40;
         assert list.head.next.next.value == 20;
+        assert list.head.next.prev.value == 10;
         assert list.tail.value == 30;
     }
 
@@ -39,6 +40,7 @@ public class InsertAfterTest {
         assert list.head.value == 20;
         assert list.head.next.value == 30;
         assert list.head.next.next.value == 50;
+        assert list.head.next.next.prev.value == 30;
         assert list.tail.value == 40;
     }
 
@@ -51,6 +53,7 @@ public class InsertAfterTest {
         assert list.count() == 2;
         assert list.head.value == 10;
         assert list.tail.value == 40;
+        assert list.tail.prev.value == 10;
     }
 
     @Test
@@ -62,5 +65,6 @@ public class InsertAfterTest {
         assert list.count() == 2;
         assert list.head.value == 40;
         assert list.tail.value == 10;
+        assert list.tail.prev.value == 40;
     }
 }
