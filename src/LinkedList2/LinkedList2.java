@@ -49,11 +49,19 @@ public class LinkedList2 {
             }
             if (this.head.value == _value) {
                 this.head = node.next;
+                this.head.prev = null;
                 return true;
             }
-            if (node.next != null && node.next.value == _value) {
-                node.next = node.next.next;
-                if (node.next == null) this.tail = node;
+            if (this.tail.value == _value) {
+                this.tail = this.tail.prev;
+                this.tail.next = null;
+                return true;
+            }
+            if (node.value == _value) {
+                Node prev = node.prev;
+                Node next = node.next;
+                prev.next = next;
+                next.prev = prev;
                 return true;
             }
             node = node.next;
@@ -64,8 +72,9 @@ public class LinkedList2 {
     public void removeAll(int _value) {
         Node node = this.head;
         while (node != null) {
-            remove(_value);
-            node = node.next;
+            if (remove(_value))
+                node = node.next;
+            else return;
         }
     }
 
