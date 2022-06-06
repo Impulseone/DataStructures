@@ -13,7 +13,6 @@ public class RemoveTest {
         assert dynArray.count == 2;
         assert dynArray.capacity == 16;
         assert dynArray.getItem(0) == 1;
-        assert dynArray.getItem(1) == null;
         assert dynArray.getItem(2) == 3;
     }
 
