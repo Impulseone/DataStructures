@@ -11,6 +11,7 @@ public class RemoveTest {
         dynArray.append(3);
         dynArray.remove(1);
         assert dynArray.count == 2;
+        assert dynArray.capacity == 16;
         assert dynArray.getItem(0) == 1;
         assert dynArray.getItem(1) == 3;
     }
@@ -19,6 +20,12 @@ public class RemoveTest {
     public void removeInEmptyListExceptionCaseTest(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.remove(17);
+    }
+
+    @Test
+    public void removeInEmptyListTest(){
+        DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
+        dynArray.remove(2);
     }
 
     @Test

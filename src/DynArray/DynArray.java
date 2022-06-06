@@ -57,7 +57,7 @@ public class DynArray<T> {
     }
 
     public void remove(int index) {
-        if (index >= capacity || index < 0) throw new IndexOutOfBoundsException();
+        if (index >= capacity || index > count || index < 0) throw new IndexOutOfBoundsException();
         if (index == capacity - 1) {
             array[index] = null;
             count -= 1;
