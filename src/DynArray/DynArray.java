@@ -1,15 +1,22 @@
+package DynArray;
+
+import java.lang.reflect.Array;
+
 public class DynArray<T> {
     public T[] array;
     public int count;
     public int capacity;
+    @SuppressWarnings({"rawtypes"})
     Class clazz;
 
+    @SuppressWarnings({"rawtypes"})
     public DynArray(Class clz) {
         clazz = clz;
         count = 0;
         makeArray(16);
     }
 
+    @SuppressWarnings("unchecked")
     public void makeArray(int new_capacity) {
         T[] newArray = (T[]) Array.newInstance(this.clazz, new_capacity);
         if (array != null && new_capacity > capacity) {
@@ -65,7 +72,7 @@ public class DynArray<T> {
             makeArray((int) (capacity / 1.5));
         }
     }
-
+    @SuppressWarnings("unchecked")
     private void moveArrayToStart() {
         T[] newArray = (T[]) Array.newInstance(this.clazz, array.length);
         int newArrayIndex = 0;
@@ -77,7 +84,7 @@ public class DynArray<T> {
         }
         array = newArray;
     }
-
+    @SuppressWarnings("unchecked")
     private void moveArrayToEnd(int fromIndex) {
         T[] newArray = (T[]) Array.newInstance(this.clazz, array.length);
         for (int i = 0; i <= fromIndex; i++) {
