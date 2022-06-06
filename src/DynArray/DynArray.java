@@ -73,12 +73,8 @@ public class DynArray<T> {
 
     private void moveArrayToStart(int fromIndex) {
         T[] newArray = (T[]) Array.newInstance(this.clazz, array.length);
-        for (int i = 0; i < fromIndex; i++) {
-            newArray[i] = array[i];
-        }
-        for (int i = fromIndex; i < count; i++) {
-            newArray[i] = array[i + 1];
-        }
+        if (fromIndex >= 0) System.arraycopy(array, 0, newArray, 0, fromIndex);
+        if (count - fromIndex >= 0) System.arraycopy(array, fromIndex + 1, newArray, fromIndex, count - fromIndex);
         array = newArray;
     }
 
@@ -91,9 +87,8 @@ public class DynArray<T> {
             }
             newArray[i] = array[i];
         }
-        for (int i = fromIndex + 1; i <= count; i++) {
-            newArray[i] = array[i - 1];
-        }
+        if (count + 1 - (fromIndex + 1) >= 0)
+            System.arraycopy(array, fromIndex + 1 - 1, newArray, fromIndex + 1, count + 1 - (fromIndex + 1));
         array = newArray;
     }
 
