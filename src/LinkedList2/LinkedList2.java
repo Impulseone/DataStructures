@@ -1,3 +1,7 @@
+package LinkedList2;
+
+import java.util.ArrayList;
+
 public class LinkedList2 {
     public Node head;
     public Node tail;
