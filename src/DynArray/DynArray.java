@@ -23,7 +23,7 @@ public class DynArray<T> {
     }
 
     public T getItem(int index) {
-        if (index >= 0 && index < capacity) {
+        if (index >= 0 && index < capacity && array[index] != null) {
             return array[index];
         } else throw new IndexOutOfBoundsException();
     }

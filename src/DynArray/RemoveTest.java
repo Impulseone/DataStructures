@@ -18,6 +18,17 @@ public class RemoveTest {
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
+    public void removeInOneElementArrayTest(){
+        DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
+        dynArray.append(1);
+        dynArray.append(4);
+        dynArray.remove(0);
+        assert dynArray.count == 1;
+        assert dynArray.capacity == 16;
+        assert dynArray.getItem(0) == null;
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
     public void removeInEmptyListExceptionCaseTest(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.remove(17);
