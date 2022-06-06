@@ -13,7 +13,8 @@ public class RemoveTest {
         assert dynArray.count == 2;
         assert dynArray.capacity == 16;
         assert dynArray.getItem(0) == 1;
-        assert dynArray.getItem(1) == 3;
+        assert dynArray.getItem(1) == null;
+        assert dynArray.getItem(2) == 3;
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
@@ -22,7 +23,7 @@ public class RemoveTest {
         dynArray.remove(17);
     }
 
-    @Test
+    @Test (expected = IndexOutOfBoundsException.class)
     public void removeInEmptyListTest(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.remove(2);

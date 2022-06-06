@@ -58,15 +58,10 @@ public class DynArray<T> {
 
     public void remove(int index) {
         if (index >= capacity || index > count || index < 0) throw new IndexOutOfBoundsException();
-        if (index == capacity - 1) {
-            array[index] = null;
-            count -= 1;
-            return;
-        }
-        moveArrayToStart(index);
         count -= 1;
-
+        array[index] = null;
         if (count < capacity / 2 && capacity > 16) {
+            moveArrayToStart(index);
             makeArray((int) (capacity / 1.5));
         }
     }
