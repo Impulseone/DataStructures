@@ -17,7 +17,7 @@ public class RemoveTest {
         assert dynArray.getItem(2) == 3;
     }
 
-    @Test (expected = IndexOutOfBoundsException.class)
+    @Test
     public void removeInOneElementArrayTest(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.append(1);
@@ -34,7 +34,7 @@ public class RemoveTest {
         dynArray.remove(17);
     }
 
-    @Test (expected = IndexOutOfBoundsException.class)
+    @Test
     public void removeInEmptyListTest(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.remove(2);
