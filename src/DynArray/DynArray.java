@@ -8,15 +8,13 @@ public class DynArray<T> {
     public int capacity;
     @SuppressWarnings({"rawtypes"})
     Class clazz;
-
     @SuppressWarnings({"rawtypes"})
     public DynArray(Class clz) {
         clazz = clz;
         count = 0;
         makeArray(16);
     }
-
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked"})
     public void makeArray(int new_capacity) {
         T[] newArray = (T[]) Array.newInstance(this.clazz, new_capacity);
         if (array != null && new_capacity > capacity) {
@@ -30,7 +28,7 @@ public class DynArray<T> {
     }
 
     public T getItem(int index) {
-        if (index >= 0 && index < capacity) {
+        if (index >= 0 && index < capacity && array[index] != null) {
             return array[index];
         } else throw new IndexOutOfBoundsException();
     }
@@ -84,7 +82,7 @@ public class DynArray<T> {
         }
         array = newArray;
     }
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked"})
     private void moveArrayToEnd(int fromIndex) {
         T[] newArray = (T[]) Array.newInstance(this.clazz, array.length);
         for (int i = 0; i <= fromIndex; i++) {
