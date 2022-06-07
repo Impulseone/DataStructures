@@ -114,4 +114,17 @@ public class RemoveTest {
         assert dynArray.count == 8;
         assert dynArray.capacity == 16;
     }
+
+    @Test
+    public void test_remove_all() {
+        DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
+        for (int i = 0; i < 16; i++) {
+            dynArray.append(i);
+        }
+        for (int i = 0; i < 16; i++) {
+            dynArray.remove(0);
+        }
+        assert dynArray.count == 0;
+        assert dynArray.capacity == 16;
+    }
 }
