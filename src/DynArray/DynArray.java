@@ -64,7 +64,7 @@ public class DynArray<T> {
     }
 
     public void remove(int index) {
-        if (index >= capacity || index < 0) throw new IndexOutOfBoundsException();
+        if (index >= capacity || index > count || index < 0) throw new IndexOutOfBoundsException();
         if (count > 0) count -= 1;
         array[index] = null;
         moveArrayToStart();
@@ -88,16 +88,16 @@ public class DynArray<T> {
 
     @SuppressWarnings({"unchecked"})
     private void moveArrayToEnd(int fromIndex) {
-        T[] newArray = (T[]) Array.newInstance(this.clazz, array.length);
-        for (int i = 0; i <= fromIndex; i++) {
-            if (i == fromIndex) {
-                newArray[i] = null;
-                break;
-            }
-            newArray[i] = array[i];
-        }
-        if (count + 1 - (fromIndex + 1) >= 0)
-            System.arraycopy(array, fromIndex + 1 - 1, newArray, fromIndex + 1, count + 1 - (fromIndex + 1));
+        T[] newArray = (T[]) Array.newInstance(this.clazz, capacity);
+//        for (int i = capacity - 1; i > fromIndex; i--) {
+//            newArray[i] = array[i - 1];
+//        }
+//        for (int i = fromIndex - 1; i >= 0; i--) {
+//            newArray[i] = array[i];
+//        }
+        if (capacity - 1 - fromIndex >= 0)
+            System.arraycopy(array, fromIndex, newArray, fromIndex + 1, capacity - 1 - fromIndex);
+        if (fromIndex >= 0) System.arraycopy(array, 0, newArray, 0, fromIndex);
         array = newArray;
     }
 

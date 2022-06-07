@@ -67,27 +67,13 @@ public class InsertTest {
     @Test
     public void insertWithIncreaseElementsTest2() {
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
-        dynArray.append(8);
+        for (int i = 0; i < 16; i++) {
+            dynArray.append(i);
+        }
         dynArray.insert(90, 15);
-        assert dynArray.array.length == 32;
         assert dynArray.count == 17;
         assert dynArray.capacity == 32;
         assert dynArray.getItem(15) == 90;
-        assert dynArray.getItem(16) == 8;
+        assert dynArray.getItem(16) == 15;
     }
 }

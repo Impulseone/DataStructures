@@ -97,12 +97,9 @@ public class RemoveTest {
         for (int i = 0; i < 16; i++) {
             dynArray.append(i);
         }
-        dynArray.remove(2);
+        dynArray.remove(15);
         assert dynArray.count == 15;
         assert dynArray.capacity == 16;
-        assert dynArray.getItem(0) == 0;
-        assert dynArray.getItem(1) == 1;
-        assert dynArray.getItem(2) == 3;
     }
 
     @Test
@@ -111,10 +108,10 @@ public class RemoveTest {
         for (int i = 0; i < 17; i++) {
             dynArray.append(i);
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             dynArray.remove(i);
         }
-        assert dynArray.count == 7;
+        assert dynArray.count == 8;
         assert dynArray.capacity == 16;
     }
 }
