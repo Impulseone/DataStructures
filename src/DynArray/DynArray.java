@@ -1,3 +1,7 @@
+package DynArray;
+
+import java.lang.reflect.Array;
+
 public class DynArray<T> {
     public T[] array;
     public int count;
@@ -65,7 +69,7 @@ public class DynArray<T> {
         array[index] = null;
         moveArrayToStart();
         if (count < capacity / 2 && capacity > 16) {
-            makeArray((int) (capacity / 1.5));
+            makeArray((int) (capacity / 1.5 >= 16 ? capacity / 1.5 : 16));
         }
     }
 
