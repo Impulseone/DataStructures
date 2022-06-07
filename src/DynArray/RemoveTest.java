@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class RemoveTest {
     @Test
-    public void test_removeStandardCase(){
+    public void test_remove_standard_case(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.append(1);
         dynArray.append(2);
@@ -17,7 +17,7 @@ public class RemoveTest {
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
-    public void test_removeFirstElement(){
+    public void test_remove_first_element(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.append(1);
         dynArray.append(4);
@@ -28,13 +28,13 @@ public class RemoveTest {
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
-    public void test_removeInEmptyListExceptionCase(){
+    public void test_remove_in_empty_list_exception_case(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.remove(17);
     }
 
     @Test
-    public void test_removeWithDecreasing(){
+    public void test_remove_with_decreasing(){
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         for (int i = 0; i < 30; i++) {
             dynArray.append(i);
