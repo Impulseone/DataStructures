@@ -60,8 +60,8 @@ public class DynArray<T> {
     }
 
     public void remove(int index) {
-        if (index >= capacity || index > count || index < 0) throw new IndexOutOfBoundsException();
-        if (count > 0) count -= 1;
+        if (index >= capacity || index >= count || index < 0) throw new IndexOutOfBoundsException();
+        count -= 1;
         array[index] = null;
         moveArrayToStart();
         if (count < capacity / 2 && capacity > 16) {

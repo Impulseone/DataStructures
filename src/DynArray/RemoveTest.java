@@ -63,7 +63,7 @@ public class RemoveTest {
         dynArray.remove(17);
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void test_remove_in_empty_list() {
         DynArray<Integer> dynArray = new DynArray<Integer>(Integer.class);
         dynArray.remove(0);
