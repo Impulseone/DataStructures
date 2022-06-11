@@ -1,3 +1,7 @@
+package Stack;
+
+import java.util.ArrayList;
+
 public class Stack<T> {
 
     private final ArrayList<T> list;
