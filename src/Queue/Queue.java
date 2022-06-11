@@ -1,3 +1,7 @@
+package Queue;
+
+import java.util.ArrayList;
+
 public class Queue<T> {
 
     private final ArrayList<T> elements;
