@@ -38,44 +38,34 @@ public class OrderedList<T> {
     public void add(T value) {
         Node<T> nodeToInsert = new Node<>(value);
         Node<T> node = this.head;
-        if (count() == 0) {
+        if (head == null) {
             head = nodeToInsert;
             tail = nodeToInsert;
             return;
         }
         while (node != null) {
-            if (_ascending && compare(value, node.value) >= 0 && node.next == null) {
+            int compareResult = compare(value, node.value);
+            boolean compareResultWithAscending = (_ascending && compareResult >= 0 || !_ascending && compareResult <= 0);
+            if (node == head && !compareResultWithAscending) {
+                head = nodeToInsert;
+                head.next = node;
+                head.next.prev = nodeToInsert;
+                return;
+            }
+            if (node == tail && compareResultWithAscending) {
                 node.next = nodeToInsert;
                 nodeToInsert.prev = node;
                 tail = nodeToInsert;
                 return;
             }
-            if (_ascending && compare(value, node.value) <= 0) {
-                if (node == head) {
-                    head = nodeToInsert;
-                    head.next = node;
-                    head.next.prev = nodeToInsert;
-                    return;
-                }
-                Node<T> nodePrev = node.prev;
+            if (node == tail) {
                 node.prev.next = nodeToInsert;
-                nodeToInsert.prev = nodePrev;
                 nodeToInsert.next = node;
+                nodeToInsert.prev = node.prev;
+                node.prev = nodeToInsert;
                 return;
             }
-            if (!_ascending && compare(value, node.value) <= 0 && node.next == null) {
-                node.next = nodeToInsert;
-                nodeToInsert.prev = node;
-                tail = nodeToInsert;
-                return;
-            }
-            if (!_ascending && compare(value, node.value) >= 0) {
-                if (node == head) {
-                    head = nodeToInsert;
-                    head.next = node;
-                    head.next.prev = nodeToInsert;
-                    return;
-                }
+            if (!compareResultWithAscending) {
                 Node<T> nodePrev = node.prev;
                 node.prev.next = nodeToInsert;
                 nodeToInsert.prev = nodePrev;

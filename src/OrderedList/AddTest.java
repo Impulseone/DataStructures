@@ -30,6 +30,48 @@ public class AddTest {
     }
 
     @Test
+    public void checkAscendingTest2() {
+        OrderedList<Integer> list = new OrderedList<Integer>(true);
+        list.add(0);
+        list.add(-7);
+        list.add(0);
+        assertEquals(-7, (int) list.getAll().get(0).value);
+        assertEquals(0, (int) list.getAll().get(1).value);
+        assertEquals(0, (int) list.getAll().get(2).value);
+        assertEquals(3, list.count());
+        assertEquals(-7, (int) list.head.value);
+        assertEquals(0, (int) list.tail.value);
+    }
+
+    @Test
+    public void checkAscendingStringsTest() {
+        OrderedList<String> list = new OrderedList<String>(false);
+        list.add(" zz");
+        list.add("ui");
+        list.add(" aa");
+        assertEquals(" zz", list.getAll().get(0).value);
+        assertEquals("ui", list.getAll().get(1).value);
+        assertEquals(" aa", list.getAll().get(2).value);
+        assertEquals(3, list.count());
+        assertEquals(" zz", list.head.value);
+        assertEquals(" aa", list.tail.value);
+    }
+
+    @Test
+    public void checkInvertedAscendingStringsTest() {
+        OrderedList<String> list = new OrderedList<String>(true);
+        list.add(" zz");
+        list.add("ui");
+        list.add(" aa");
+        assertEquals(" zz", list.getAll().get(2).value);
+        assertEquals("ui", list.getAll().get(1).value);
+        assertEquals(" aa", list.getAll().get(0).value);
+        assertEquals(3, list.count());
+        assertEquals(" zz", list.tail.value);
+        assertEquals(" aa", list.head.value);
+    }
+
+    @Test
     public void checkInvertedAscendingTest() {
         OrderedList<Integer> list = new OrderedList<Integer>(false);
         list.add(5);
