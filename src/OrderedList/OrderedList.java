@@ -49,19 +49,6 @@ public class OrderedList<T> {
             if (node == head && !compareResultWithAscending) {
                 head = nodeToInsert;
                 head.next = node;
-                head.next.prev = nodeToInsert;
-                return;
-            }
-            if (node == tail && compareResultWithAscending) {
-                node.next = nodeToInsert;
-                nodeToInsert.prev = node;
-                tail = nodeToInsert;
-                return;
-            }
-            if (node == tail) {
-                node.prev.next = nodeToInsert;
-                nodeToInsert.next = node;
-                nodeToInsert.prev = node.prev;
                 node.prev = nodeToInsert;
                 return;
             }
@@ -70,6 +57,12 @@ public class OrderedList<T> {
                 node.prev.next = nodeToInsert;
                 nodeToInsert.prev = nodePrev;
                 nodeToInsert.next = node;
+                return;
+            }
+            if (node == tail) {
+                node.next = nodeToInsert;
+                nodeToInsert.prev = node;
+                tail = nodeToInsert;
                 return;
             }
             node = node.next;
@@ -139,7 +132,7 @@ public class OrderedList<T> {
     }
 
     ArrayList<Node<T>> getAll() {
-        ArrayList<Node<T>> r = new ArrayList<Node<T>>();
+        ArrayList<Node<T>> r = new ArrayList<>();
         Node<T> node = head;
         while (node != null) {
             r.add(node);
