@@ -45,7 +45,7 @@ public class OrderedList<T> {
         }
         while (node != null) {
             int compareResult = compare(value, node.value);
-            boolean compareResultWithAscending = (_ascending && compareResult >= 0 || !_ascending && compareResult <= 0);
+            boolean compareResultWithAscending = (_ascending && compareResult > 0 || !_ascending && compareResult < 0);
             if (node == head && !compareResultWithAscending) {
                 head = nodeToInsert;
                 head.next = node;
@@ -57,6 +57,7 @@ public class OrderedList<T> {
                 node.prev.next = nodeToInsert;
                 nodeToInsert.prev = nodePrev;
                 nodeToInsert.next = node;
+                node.prev = nodeToInsert;
                 return;
             }
             if (node == tail) {
