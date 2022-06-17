@@ -17,13 +17,18 @@ public class AddTest {
 
     @Test
     public void checkAscendingTest() {
-        OrderedList<Integer> list = new OrderedList<Integer>(false);
+        OrderedList<Integer> list = new OrderedList<Integer>(true);
         list.add(5);
         list.add(6);
-        assertEquals(6, (int) list.head.value);
+        list.add(-5);
+        assertEquals(-5, (int) list.head.value);
         assertEquals(5, (int) list.head.next.value);
-        assertEquals(2, list.count());
-        assertEquals(5, (int) list.tail.value);
+        assertEquals(-5, (int) list.head.next.prev.value);
+        assertEquals(3, list.count());
+        assertEquals(6, (int) list.tail.value);
+        assertEquals(5, (int) list.tail.prev.value);
+        assertNull(list.tail.next);
+        assertNull(list.head.prev);
     }
 
     @Test

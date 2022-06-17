@@ -38,4 +38,14 @@ public class OrderedListTest {
         assertEquals(1, (int) founded.value);
         assertNull(notFounded);
     }
+
+    @Test
+    public void clearTest() {
+        OrderedList<Integer> list = new OrderedList<Integer>(false);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.clear(true);
+        assertNull(list.head);
+    }
 }
