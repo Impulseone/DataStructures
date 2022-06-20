@@ -20,24 +20,25 @@ public class HashTable {
     }
 
     public int seekSlot(String value) {
+        int hashStep = step;
         int hash = hashFun(value);
         if (slots[hash] == null) {
             return hash;
         }
         boolean nextIteration = false;
         while (slots[hash] != null) {
+            hash += hashStep;
+            if (hash >= slots.length) {
+                hash = hash - slots.length;
+                nextIteration = true;
+                hashStep *= 2;
+            }
             if (nextIteration && hash > hashFun(value)) {
                 return -1;
             }
-            if (hash + step < slots.length) {
-                hash += step;
-                continue;
+            if (hash + step >= slots.length && nextIteration) {
+                return -1;
             }
-            if (hash + step >= slots.length) {
-                hash = hash + step - slots.length;
-                nextIteration = true;
-            }
-
         }
         return hash;
     }

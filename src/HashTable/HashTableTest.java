@@ -15,9 +15,15 @@ public class HashTableTest {
 
     @Test
     public void seekSlotTest() {
-        HashTable table = new HashTable(17, 3);
-        int index = table.seekSlot("avs");
-        assertEquals(7, index);
+        HashTable table = new HashTable(11, 3);
+        int index = table.put("");
+        int index2 = table.put("a");
+        int index3 = table.put("aa");
+        int index4 = table.put("s");
+        int index5 = table.put("ss");
+        int index6 = table.put("s");
+        int index7 = table.put("");
+        assertEquals(0, index);
     }
 
     @Test
