@@ -5,7 +5,6 @@ class NativeDictionary<T> {
     public String[] slots;
     public T[] values;
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     public NativeDictionary(int sz, Class clazz) {
         size = sz;
         slots = new String[size];
