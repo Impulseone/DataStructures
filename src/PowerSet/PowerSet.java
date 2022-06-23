@@ -1,3 +1,5 @@
+package PowerSet;
+
 public class PowerSet {
 
     private final HashTable hashTable;
