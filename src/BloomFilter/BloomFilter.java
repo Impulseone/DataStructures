@@ -1,10 +1,10 @@
 public class BloomFilter {
     public int filter_len;
-    private int[] array;
+    private int bitInt;
 
     public BloomFilter(int f_len) {
         filter_len = f_len;
-        array = new int[filter_len];
+        bitInt = 0;
     }
 
     public int hash1(String str1) {
@@ -28,13 +28,15 @@ public class BloomFilter {
     public void add(String str1) {
         int index1 = hash1(str1);
         int index2 = hash2(str1);
-        array[index1] = 1;
-        array[index2] = 1;
+        bitInt |= (1 << index1);
+        bitInt |= (1 << index2);
+
     }
 
     public boolean isValue(String str1) {
         int index1 = hash1(str1);
         int index2 = hash2(str1);
-        return array[index1] == 1 && array[index2] == 1;
+
+        return (bitInt & (1 << index1)) != 0 && (bitInt & (1 << index2)) != 0;
     }
 }

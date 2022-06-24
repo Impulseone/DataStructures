@@ -30,5 +30,18 @@ public class BloomFilterTest {
         assertTrue(bloomFilter.isValue("7890123456"));
         assertTrue(bloomFilter.isValue("8901234567"));
         assertTrue(bloomFilter.isValue("9012345678"));
+        assertFalse(bloomFilter.isValue("nkjn0934"));
+    }
+
+    @Test
+    public void test2() {
+        int result = 0;
+        result |= (1<<6);
+        result |= (1<<7);
+        result &= ~(1<<6);
+        int a = result & (1<<6);
+        int b = result & (1<<7);
+        System.out.println(a);
+        System.out.println(b);
     }
 }
