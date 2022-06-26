@@ -38,13 +38,6 @@ class NativeDictionary<T> {
     public T get(String key) {
         if (!isKey(key))
             return null;
-        int index = 0;
-        for (int i = 0; i < slots.length; i++) {
-            if (slots[i] != null && slots[i].equals(key)) {
-                index = i;
-                break;
-            }
-        }
-        return values[index];
+        return values[hashFun(key)];
     }
 }
