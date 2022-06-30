@@ -1,9 +1,14 @@
+package NativeCache;
+
+import java.lang.reflect.Array;
+
 class NativeCache<T> {
     public int size;
     public String[] slots;
     public T[] values;
     public int[] hits;
 
+    @SuppressWarnings("rawtypes, unchecked")
     public NativeCache(int sz, Class clazz) {
         size = sz;
         slots = new String[size];
