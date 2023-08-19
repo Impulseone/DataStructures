@@ -89,12 +89,6 @@ public class DynArray<T> {
     @SuppressWarnings({"unchecked"})
     private void moveArrayToEnd(int fromIndex) {
         T[] newArray = (T[]) Array.newInstance(this.clazz, capacity);
-//        for (int i = capacity - 1; i > fromIndex; i--) {
-//            newArray[i] = array[i - 1];
-//        }
-//        for (int i = fromIndex - 1; i >= 0; i--) {
-//            newArray[i] = array[i];
-//        }
         if (capacity - 1 - fromIndex >= 0)
             System.arraycopy(array, fromIndex, newArray, fromIndex + 1, capacity - 1 - fromIndex);
         if (fromIndex >= 0) System.arraycopy(array, 0, newArray, 0, fromIndex);

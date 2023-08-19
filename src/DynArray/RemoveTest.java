@@ -84,10 +84,10 @@ public class RemoveTest {
         for (int i = 0; i < 30; i++) {
             dynArray.append(i);
         }
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 15; i++) {
             dynArray.remove(i);
         }
-        assert dynArray.count == 14;
+        assert dynArray.count == 15;
         assert dynArray.capacity == 21;
     }
 

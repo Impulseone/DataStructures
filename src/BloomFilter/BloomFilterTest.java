@@ -8,7 +8,7 @@ public class BloomFilterTest {
 
     @Test
     public void isValue() {
-        BloomFilter bloomFilter = new BloomFilter(32);
+        BloomFilter bloomFilter = new BloomFilter(7);
         bloomFilter.add("0123456789");
         bloomFilter.add("1234567890");
         bloomFilter.add("2345678901");
